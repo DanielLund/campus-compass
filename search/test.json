@@ -1,0 +1,134 @@
+{
+    "build_a": {
+        "coords": [1,5],
+        "neighbors": [
+            "out_a"
+        ],
+        "actions": [
+            "build_a to out_a"
+        ]
+    },
+    "out_a": {
+        "coords": [1,4],
+        "neighbors": [
+            "build_a",
+            "build_b",
+            "out_c"
+        ],
+        "actions": [
+            "out_a to build_a",
+            "out_a to build_b",
+            "out_a to out_c"
+        ]
+    },
+    "build_b": {
+        "coords": [1,3],
+        "neighbors": [
+            "out_a"
+        ],
+        "actions": [
+            "build_b to out_a"
+        ]
+    },
+    "build_c": {
+        "coords": [4,6],
+        "neighbors": [
+            "out_b"
+        ],
+        "actions": [
+            "build_c to out_b"
+        ]
+    },
+    "out_b": {
+        "coords": [4,5],
+        "neighbors": [
+            "build_c",
+            "out_e",
+            "out_c"
+        ],
+        "actions": [
+            "out_b to build_c",
+            "out_b to out_e",
+            "out_b to out_c"
+        ]
+    },
+    "out_c": {
+        "coords": [4,4],
+        "neighbors": [
+            "out_b",
+            "out_d",
+            "out_a"
+        ],
+        "actions": [
+            "out_c to out_b",
+            "out_c to out_d",
+            "out_c to out_a"
+        ]
+    },
+    "out_d": {
+        "coords": [4,3],
+        "neighbors": [
+            "out_c",
+            "out_f",
+            "build_d"
+        ],
+        "actions": [
+            "out_d to out_c",
+            "out_d to out_f",
+            "out_d to build_d"
+        ]
+    },
+    "build_d": {
+        "coords": [4,1],
+        "neighbors": [
+            "out_d"
+        ],
+        "actions": [
+            "build_d to out_d"
+        ]
+    },
+    "build_e": {
+        "coords": [6,6],
+        "neighbors": [
+            "out_e"
+        ],
+        "actions": [
+            "build_e to out_e"
+        ]
+    },
+    "out_e": {
+        "coords": [6,5],
+        "neighbors": [
+            "build_e",
+            "out_b",
+            "out_f"
+        ],
+        "actions": [
+            "out_e to build_e",
+            "out_e to out_b",
+            "out_e to out_f"
+        ]
+    },
+    "out_f": {
+        "coords": [6,3],
+        "neighbors": [
+            "out_e",
+            "build_f",
+            "out_d"
+        ],
+        "actions": [
+            "out_f to out_e",
+            "out_f to build_f",
+            "out_f to out_d"
+        ]
+    },
+    "build_f": {
+        "coords": [7,3],
+        "neighbors": [
+            "out_f"
+        ],
+        "actions": [
+            "build_f to out_f"
+        ]
+    }
+}
