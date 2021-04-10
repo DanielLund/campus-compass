@@ -5,12 +5,13 @@ class Node():
 
     """" A class that defines a node and its attributes. """
 
-    def __init__(self, state, parent, action, coord, neighbors, cost):
+    def __init__(self, state, parent, description, coord, neighbors, tags, cost):
         self.state = state # State is the name (e.g. "Library")
         self.parent = parent # Previous node
-        self.action = action # Description of how we got from the parent node to this one
+        self.description = description # Description of the place
         self.coord = coord # Coordinates of the node
         self.neighbors = neighbors # Neighbor nodes
+        self.tags = tags # tags
         self.cost = cost # Distance between this node and the parent node
 
 class Frontier():
@@ -75,16 +76,17 @@ class A_Star():
         # Initialize values for the first node (and end node state)
         self.start = start
         self.end = end
-        self.starting_actions = self.campus[start]["actions"]
+        self.starting_description = self.campus[start]["description"]
         self.starting_coords = self.campus[start]["coords"]
         self.starting_neighbors = self.campus[start]["neighbors"]
+        self.starting_tags = self.campus[start]["tags"]
     
     def neighbors(self, node):
         
         # Find all the neighbors of a node using the data loaded from the JSON
         result = []
         for i in range(len(node.neighbors)):
-            result.append((self.campus[node.state]["actions"][i], node.neighbors[i], self.campus[node.neighbors[i]]["coords"], self.campus[node.neighbors[i]]["neighbors"]))
+            result.append((self.campus[node.neighbors[i]]["description"], node.neighbors[i], self.campus[node.neighbors[i]]["coords"], self.campus[node.neighbors[i]]["neighbors"], self.campus[node.neighbors[i]]["tags"]))
         return result
     
     def calculate_distance(self, coord_a, coord_b):
@@ -100,7 +102,7 @@ class A_Star():
     def solve(self):
 
         # Initialize frontier with starting point
-        start_node = Node(state=self.start, parent=None, action=self.starting_actions, coord=self.starting_coords, neighbors=self.starting_neighbors, cost=0)
+        start_node = Node(state=self.start, parent=None, description=self.starting_description, coord=self.starting_coords, neighbors=self.starting_neighbors, tags=self.starting_tags, cost=0)
         frontier = Frontier()
         frontier.add(start_node)
 
@@ -134,7 +136,7 @@ class A_Star():
             self.explored.add(node.state)
 
             # Add neighbors to frontier
-            for action, state, coord, neighbors in self.neighbors(node):
+            for description, state, coord, neighbors, tags in self.neighbors(node):
 
                 # Check that this not is not already in the frontier or hasn't already been explored
                 if not frontier.contains_state(state) and state not in self.explored:
@@ -143,10 +145,10 @@ class A_Star():
                     cost = node.cost + self.calculate_distance(node.coord, coord)
 
                     # Create node and add it to the frontier
-                    child = Node(state=state, parent=node, action=action, coord=coord, neighbors=neighbors, cost=cost)
+                    child = Node(state=state, parent=node, description=description, coord=coord, neighbors=neighbors, tags=tags, cost=cost)
                     frontier.add(child)
 
-    def calculate_directions():
+    def calculate_directions(self):
 
         # Initialize dict
         directions = {}
@@ -215,12 +217,12 @@ class A_Star():
             else:
                 direction = "backwards"
             
-            # Add direction to the dict
-            directions[self.solution[i+1]] = direction
+            # Add direction to the list
+            directions[self.solution[i+1].state] = direction
         
         return directions
 
-    def format_output():
+    def format_output(self):
 
         # Initialize instructions
         instructions = []
@@ -236,20 +238,152 @@ class A_Star():
 
                 # If the starting point is within a building
                 if "building" in self.solution[i].tags:
-                    instructions.append["Right, start by leaving this building through the main door"]
+                    instruct = "Start by leaving the building through the main door,"
+
+                    if directions[self.solution[i+1].state] == "right":
+                        instructions.append(instruct + " and turn right.")
+                    
+                    elif directions[self.solution[i+1].state] == "left":
+                        instructions.append(instruct + " and turn left.")
+                    
+                    else:
+                        instructions.append(instruct + " and walk straight ahead.")
+                
+                # If the starting point is outside
+                elif "outside" in self.solution[i].tags:
+                    instructions.append("Go towards the "+ self.solution[i+1].state + ". " + self.solution[i+1].description + ".")
             
+            # Node before the end
+            elif i == len(self.solution)-2:
 
-        
+                # if building then it is the wessex house
+                if "building" in self.solution[i].tags:
 
+                    # ensure it though
+                    if "through building" in self.solution[i].tags:
+                        instructions.append("Finally, go through the Wessex House, your destination is right on the other side!")
+                
+                # if outside
+                else:
 
+                    # If crossway
+                    if "crossway" in self.solution[i].tags:
+
+                        # If the end point is a building
+                        if "building" in self.solution[-1].tags:
+
+                            # If straight
+                            if directions[self.solution[i].state] == "straight":
+                                instructions.append("Your destination is the building straight ahead, go in!")
+                            
+                            # if right/left
+                            else:
+                                instructions.append("Your destination is the building on the "+directions[self.solution[i].state]+", go in!")
+                        
+                        # If the end point is outside
+                        else:
+
+                            # If straight
+                            if directions[self.solution[i].state] == "straight":
+                                instructions.append("Keep going straight ahead and you will reach your destination!")
+                            
+                            # if right/left
+                            else:
+                                instructions.append("At the next crossway, turn on the "+directions[self.solution[i].state]+" and you will reach your destination!")
+                    
+                    # if not crossway
+                    else:
+
+                        # If straight
+                        if directions[self.solution[i].state] == "straight":
+                            instructions.append("Keep going straight ahead and you will reach your destination!")
+                            
+                        # if right/left
+                        else:
+                            instructions.append("Turn on the "+directions[self.solution[i].state]+" so that you on the same walkway, and you will reach your destination!")
+
+                # store instructions
+                self.formatted_output = instructions
+                return
+
+            # Middle nodes
+            else:
+
+                # If previous was building, present node is front door and i = 1, then go to next node (instruction given already in node 0)
+                if "front door" in self.solution[i].tags and "building" in self.solution[i-1].tags and i == 1:
+                    pass
+                
+                # If building
+                elif "building" in self.solution[i].tags:
+
+                    # If through building
+                    if "through building" in self.solution[i].tags:
+                        instructions.append("Enter the "+self.solution[i].state+ " and go through it until you're out again.")
+
+                # If outside
+                elif "outside" in self.solution[i].tags:
+
+                    # if crossway
+                    if "crossway" in self.solution[i].tags:
+
+                        # if frontdoor
+                        if "front door" in self.solution[i].tags:
+
+                            # if straight
+                            if directions[self.solution[i].state] == "straight":
+
+                                # if next node is not straight as well only
+                                if directions[self.solution[i+1].state] != "straight":
+                                    for neighbor in self.solution[i].neighbors:
+                                        if "building" in self.campus[neighbor]["tags"]:
+                                            instructions.append("Walk past the "+neighbor+".")
+                                            break
+                            
+                            # if right or left
+                            else:
+                                instructions.append("Once you reach the "+self.solution[i].state+", turn "+directions[self.solution[i].state]+" towards the "+self.solution[i+1].state+".")
+                        
+                        # if not front door and straight
+                        elif directions[self.solution[i].state] == "straight":
+
+                            # if next node is not straight as well only
+                            if directions[self.solution[i+1].state] != "straight":
+                                instructions.append("Keep walking straight until you reach "+self.solution[i+1].state+".")
+                        
+                        # if not front door and right/left
+                        else:
+                            instructions.append("Once you reach the "+self.solution[i].state+", turn "+directions[self.solution[i].state]+" towards the "+self.solution[i+1].state+".")
+                    
+                    # if not crossway
+                    else:
+
+                        # if right/left
+                        if directions[self.solution[i].state] != "straight":
+                            instructions.append("Turn "+directions[self.solution[i].state]+ ", so that you stay on the same walkway.")
+                        
+                        # if straight
+                        else:
+
+                            # if under building
+                            if "under building" in self.solution[i].tags:
+                                instructions.append("Walk through the archway in front of you.")
+                            
+                            # If other case
+                            else:
+                                # ensure next stop isn't straight agin
+                                if directions[self.solution[i+1].state] != "straight":
+                                    instructions.append("Keep walking straight until you reach "+self.solution[i+1].state+".")
 
 if __name__ == "__main__":
 
-    start = "out_a"
-    end = "build_e"
+    start = "build_c"
+    end = "build_g"
     campus = A_Star("test.json", start, end)
     campus.solve()
     campus.print_solution()
     print(campus.solution)
     for node in campus.solution:
         print(node.state)
+    campus.format_output()
+    for step in campus.formatted_output:
+        print(step)

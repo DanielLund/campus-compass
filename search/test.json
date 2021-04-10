@@ -4,8 +4,9 @@
         "neighbors": [
             "out_a"
         ],
-        "actions": [
-            "build_a to out_a"
+        "description": "build_a looks like build_a",
+        "tags": [
+            "building"
         ]
     },
     "out_a": {
@@ -15,10 +16,11 @@
             "build_b",
             "out_c"
         ],
-        "actions": [
-            "out_a to build_a",
-            "out_a to build_b",
-            "out_a to out_c"
+        "description": "out_a looks like out_a",
+        "tags": [
+            "outside",
+            "front door",
+            "crossway"
         ]
     },
     "build_b": {
@@ -26,8 +28,9 @@
         "neighbors": [
             "out_a"
         ],
-        "actions": [
-            "build_b to out_a"
+        "description": "build_b looks like build_b",
+        "tags": [
+            "building"
         ]
     },
     "build_c": {
@@ -35,8 +38,9 @@
         "neighbors": [
             "out_b"
         ],
-        "actions": [
-            "build_c to out_b"
+        "description": "build_c looks like build_c",
+        "tags": [
+            "building"
         ]
     },
     "out_b": {
@@ -46,10 +50,11 @@
             "out_e",
             "out_c"
         ],
-        "actions": [
-            "out_b to build_c",
-            "out_b to out_e",
-            "out_b to out_c"
+        "description": "out_b looks like out_b",
+        "tags": [
+            "outside",
+            "front door",
+            "crossway"
         ]
     },
     "out_c": {
@@ -59,10 +64,10 @@
             "out_d",
             "out_a"
         ],
-        "actions": [
-            "out_c to out_b",
-            "out_c to out_d",
-            "out_c to out_a"
+        "description": "out_c looks like out_c",
+        "tags": [
+            "outside",
+            "crossway"
         ]
     },
     "out_d": {
@@ -72,10 +77,10 @@
             "out_f",
             "build_d"
         ],
-        "actions": [
-            "out_d to out_c",
-            "out_d to out_f",
-            "out_d to build_d"
+        "description": "out_d looks like out_d",
+        "tags": [
+            "outside",
+            "crossway"
         ]
     },
     "build_d": {
@@ -83,8 +88,9 @@
         "neighbors": [
             "out_d"
         ],
-        "actions": [
-            "build_d to out_d"
+        "description": "build_d looks like build_d",
+        "tags": [
+            "building"
         ]
     },
     "build_e": {
@@ -92,8 +98,9 @@
         "neighbors": [
             "out_e"
         ],
-        "actions": [
-            "build_e to out_e"
+        "description": "build_e looks like build_e",
+        "tags": [
+            "building"
         ]
     },
     "out_e": {
@@ -101,12 +108,14 @@
         "neighbors": [
             "build_e",
             "out_b",
-            "out_f"
+            "out_f",
+            "out_h"
         ],
-        "actions": [
-            "out_e to build_e",
-            "out_e to out_b",
-            "out_e to out_f"
+        "description": "out_e looks like out_e",
+        "tags": [
+            "outside",
+            "front door",
+            "crossway"
         ]
     },
     "out_f": {
@@ -114,12 +123,14 @@
         "neighbors": [
             "out_e",
             "build_f",
-            "out_d"
+            "out_d",
+            "angle_a"
         ],
-        "actions": [
-            "out_f to out_e",
-            "out_f to build_f",
-            "out_f to out_d"
+        "description": "out_f looks like out_f",
+        "tags": [
+            "outside",
+            "front door",
+            "crossway"
         ]
     },
     "build_f": {
@@ -127,8 +138,99 @@
         "neighbors": [
             "out_f"
         ],
-        "actions": [
-            "build_f to out_f"
+        "description": "build_f looks like build_f",
+        "tags": [
+            "building"
+        ]
+    },
+    "angle_a": {
+        "coords": [6,1],
+        "neighbors": [
+            "out_f",
+            "through_a"
+        ],
+        "description": "angle_a looks like angle_a",
+        "tags": [
+            "outside",
+            "front door"
+        ]
+    },
+    "through_a": {
+        "coords": [7,1],
+        "neighbors": [
+            "angle_a",
+            "out_g"
+        ],
+        "description": "through_a looks like through_a",
+        "tags": [
+            "building",
+            "through building"
+        ]
+    },
+    "out_g": {
+        "coords": [8,1],
+        "neighbors": [
+            "through_a",
+            "end_a"
+        ],
+        "description": "out_g looks like out_g",
+        "tags": [
+            "outside",
+            "front door"
+        ]
+    },
+    "end_a": {
+        "coords": [9,1],
+        "neighbors": [
+            "out_g"
+        ],
+        "description": "end_a looks like end_a",
+        "tags": [
+            "outside"
+        ]
+    },
+    "out_h": {
+        "coords": [7,5],
+        "neighbors": [
+            "out_e",
+            "out_i"
+        ],
+        "description": "out_h looks like out_h",
+        "tags": [
+            "outside"
+        ]
+    },
+    "out_i": {
+        "coords": [8,5],
+        "neighbors": [
+            "out_h",
+            "out_j"
+        ],
+        "description": "out_i looks like out_i",
+        "tags": [
+            "outside"
+        ]
+    },
+    "out_j": {
+        "coords": [9,5],
+        "neighbors": [
+            "build_g",
+            "out_i"
+        ],
+        "description": "out_j looks like out_j",
+        "tags": [
+            "outside",
+            "front door"
+        ]
+    },
+    "build_g": {
+        "coords": [10,5],
+        "neighbors": [
+            "out_j"
+        ],
+        "description": "build_g looks like build_g",
+        "tags": [
+            "building"
         ]
     }
 }
