@@ -227,6 +227,12 @@ class A_Star():
         # Initialize instructions
         instructions = []
         
+        # Initialize linking word lists
+        next_like_words = ["Next", "Then", "After that", "Afterward", "Subsequently"]
+        next_counter = 0
+        reach_like_words = ["Once you reach", "After you reach", "When you reach", "After reaching"]
+        reach_counter = 0
+
         # Calculate the angles of middle nodes
         directions = self.calculate_directions()
 
@@ -236,8 +242,8 @@ class A_Star():
             # Start node
             if i == 0:
 
-                # If the starting point is within a building
-                if "building" in self.solution[i].tags:
+                # If the starting point is within a building but not wessex (bc wessex has 2 ways out)
+                if "building" in self.solution[i].tags and not "through building" in self.solution[i].tags:
                     instruct = "Start by leaving the building through the main door,"
 
                     if directions[self.solution[i+1].state] == "right":
@@ -249,9 +255,27 @@ class A_Star():
                     else:
                         instructions.append(instruct + " and walk straight ahead.")
                 
+                # if starting point is wessex house
+                elif "building" in self.solution[i].tags and "through building" in self.solution[i].tags:
+
+                    # If next point towards parade
+                    if self.solution[i].coord[0] < self.solution[i+1].coord[0]:
+                        instruct = "Start by leaving the building through the door that leads to the Parade,"
+                    else:
+                        instruct = "Start by leaving the building through the door that leads to side opposite to the Parade,"
+                    
+                    if directions[self.solution[i+1].state] == "right":
+                        instructions.append(instruct + " and turn right.")
+                    
+                    elif directions[self.solution[i+1].state] == "left":
+                        instructions.append(instruct + " and turn left.")
+                    
+                    else:
+                        instructions.append(instruct + " and walk straight ahead.")
+
                 # If the starting point is outside
                 elif "outside" in self.solution[i].tags:
-                    instructions.append("Go towards the "+ self.solution[i+1].state + ". " + self.solution[i+1].description + ".")
+                    instructions.append("First, go towards the "+ self.solution[i+1].state + ". " + self.solution[i+1].description + ".")
             
             # Node before the end
             elif i == len(self.solution)-2:
@@ -261,7 +285,7 @@ class A_Star():
 
                     # ensure it though
                     if "through building" in self.solution[i].tags:
-                        instructions.append("Finally, go through the Wessex House, your destination is right on the other side!")
+                        instructions.append("Finally, go through the Wessex House building, your destination is right on the other side! "+self.solution[-1].description)
                 
                 # if outside
                 else:
@@ -274,33 +298,33 @@ class A_Star():
 
                             # If straight
                             if directions[self.solution[i].state] == "straight":
-                                instructions.append("Your destination is the building straight ahead, go in!")
+                                instructions.append("Your destination, the "+self.solution[-1].state+", is straight ahead. "+self.solution[-1].description)
                             
                             # if right/left
                             else:
-                                instructions.append("Your destination is the building on the "+directions[self.solution[i].state]+", go in!")
+                                instructions.append("Your destination, the "+self.solution[-1].state+", is the building on the "+directions[self.solution[i].state]+". "+self.solution[-1].description)
                         
                         # If the end point is outside
                         else:
 
                             # If straight
                             if directions[self.solution[i].state] == "straight":
-                                instructions.append("Keep going straight ahead and you will reach your destination!")
+                                instructions.append("Keep going straight ahead and you will reach your destination, the "+self.solution[-1].state+". "+self.solution[-1].description)
                             
                             # if right/left
                             else:
-                                instructions.append("At the next crossway, turn on the "+directions[self.solution[i].state]+" and you will reach your destination!")
+                                instructions.append("At the next crossway, turn on the "+directions[self.solution[i].state]+" and you will reach your destination, the "+self.solution[-1].state+". "+self.solution[-1].description)
                     
                     # if not crossway
                     else:
 
                         # If straight
                         if directions[self.solution[i].state] == "straight":
-                            instructions.append("Keep going straight ahead and you will reach your destination!")
+                            instructions.append("Keep going straight ahead and you will reach your destination, the "+self.solution[-1].state+". "+self.solution[-1].description)
                             
                         # if right/left
                         else:
-                            instructions.append("Turn on the "+directions[self.solution[i].state]+" so that you on the same walkway, and you will reach your destination!")
+                            instructions.append("Turn on the "+directions[self.solution[i].state]+" so that you on the same walkway, and you will reach your destination: the "+self.solution[-1].state+". "+self.solution[-1].description)
 
                 # store instructions
                 self.formatted_output = instructions
@@ -318,8 +342,10 @@ class A_Star():
 
                     # If through building
                     if "through building" in self.solution[i].tags:
-                        instructions.append("Enter the "+self.solution[i].state+ " and go through it until you're out again.")
-
+                        instructions.append(next_like_words[next_counter]+", enter the "+self.solution[i].state+ " and go through it until you're out again.")
+                        next_counter += 1
+                        if next_counter == len(next_like_words):
+                            next_counter = 0
                 # If outside
                 elif "outside" in self.solution[i].tags:
 
@@ -336,48 +362,73 @@ class A_Star():
                                 if directions[self.solution[i+1].state] != "straight":
                                     for neighbor in self.solution[i].neighbors:
                                         if "building" in self.campus[neighbor]["tags"]:
-                                            instructions.append("Walk past the "+neighbor+".")
+                                            instructions.append("Walk past the "+neighbor+". "+self.campus[neighbor]["description"])
                                             break
                             
                             # if right or left
                             else:
-                                instructions.append("Once you reach the "+self.solution[i].state+", turn "+directions[self.solution[i].state]+" towards the "+self.solution[i+1].state+".")
-                        
+                                instructions.append(reach_like_words[reach_counter]+" the "+self.solution[i].state+", turn "+directions[self.solution[i].state]+" towards the "+self.solution[i+1].state+".")
+                                reach_counter += 1
+                                if reach_counter == len(reach_like_words):
+                                    reach_counter = 0
+    
                         # if not front door and straight
                         elif directions[self.solution[i].state] == "straight":
 
                             # if next node is not straight as well only
                             if directions[self.solution[i+1].state] != "straight":
-                                instructions.append("Keep walking straight until you reach "+self.solution[i+1].state+".")
-                        
+                                instructions.append(next_like_words[next_counter]+", keep walking straight until you reach "+self.solution[i+1].state+".")
+                                next_counter += 1
+                                if next_counter == len(next_like_words):
+                                    next_counter = 0
+
                         # if not front door and right/left
                         else:
-                            instructions.append("Once you reach the "+self.solution[i].state+", turn "+directions[self.solution[i].state]+" towards the "+self.solution[i+1].state+".")
-                    
+                            instructions.append(reach_like_words[reach_counter]+" the "+self.solution[i].state+", turn "+directions[self.solution[i].state]+" towards the "+self.solution[i+1].state+".")
+                            reach_counter += 1
+                            if reach_counter == len(reach_like_words):
+                                reach_counter = 0
+
                     # if not crossway
                     else:
 
                         # if right/left
                         if directions[self.solution[i].state] != "straight":
-                            instructions.append("Turn "+directions[self.solution[i].state]+ ", so that you stay on the same walkway.")
-                        
+                            instructions.append(next_like_words[next_counter]+", turn "+directions[self.solution[i].state]+ ", so that you stay on the same walkway.")
+                            next_counter += 1
+                            if next_counter == len(next_like_words):
+                                next_counter = 0
+
                         # if straight
                         else:
 
                             # if under building
                             if "under building" in self.solution[i].tags:
-                                instructions.append("Walk through the archway in front of you.")
-                            
+                                instructions.append(next_like_words[next_counter]+", walk through the archway in front of you.")
+                                next_counter += 1
+                                if next_counter == len(next_like_words):
+                                    next_counter = 0
+
+                            # if stairs
+                            elif "stairs" in self.solution[i].tags:
+                                instructions.append(next_like_words[next_counter]+", take the stairs in front of you.")
+                                next_counter += 1
+                                if next_counter == len(next_like_words):
+                                    next_counter = 0
+
                             # If other case
                             else:
                                 # ensure next stop isn't straight agin
                                 if directions[self.solution[i+1].state] != "straight":
-                                    instructions.append("Keep walking straight until you reach "+self.solution[i+1].state+".")
+                                    instructions.append(next_like_words[next_counter]+", keep walking straight until you reach "+self.solution[i+1].state+". "+self.solution[i+1].description)
+                                    next_counter += 1
+                                    if next_counter == len(next_like_words):
+                                        next_counter = 0
 
 if __name__ == "__main__":
 
-    start = "build_c"
-    end = "build_g"
+    start = "build_a"
+    end = "end_a"
     campus = A_Star("test.json", start, end)
     campus.solve()
     campus.print_solution()
