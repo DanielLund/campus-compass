@@ -1,0 +1,45 @@
+	    1 West, 1W
+	    1 West North, 1WN
+	    3 West, 3W
+	    3 West North, 3WN
+	    Wessex House
+	    Big Fresh, Cooperative, Supermarket
+      Fresh Express, supermarket 
+      Santander
+      Barclays
+
+	    5 West, 5W
+      9 West, 9W
+	    7 West, 7W
+	
+	    2 West, 2W
+	    University Hall
+	    4 West, 4W
+	    6 West, 6W
+	    6 West South, 6WN
+	    8 West, 8W
+	    10 West, 10W
+	
+	    1 South, 1S
+	    2 South, 2S
+	    3 South, 3S
+	    4 South, 4S
+	    Milner Centre
+	    4 South A, 4SA
+	    5 South, 5S
+	
+	    1 East, 1E
+	    3 East, 3E
+	    Norwood
+	    SU, Student Union
+	    Founders Hall, FH
+	    Chancellors Building, CB
+	
+	    2 East, 2E
+	    4 East, 4E
+	    4 East South, 4SE
+	    6 East, 6E
+	    8 East, 8E
+	    The Edge
+	    East Building, EB
+	    STV, Student Training Village
