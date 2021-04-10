@@ -1,0 +1,49 @@
+Campus Buildings(Excluding Accomodations, Descriptions in Brackets):
+
+  Left/West of library:
+    North Buildings:
+    1 West(Fac of Humanities & Social Sci, dep of comp sci & health),
+    1 West North(Dep of edu, Dep of pol, lang & int studies),
+    3 West(Dep of Physics),
+    3 West North(lecture theatres),
+    Wessex House(Tall tower block, Offices, WH1LT is below the parade),
+    Fresh(supermarket), Santander(bank), Barclays(bank),
+    5 West(Dep of pharmacy & pharmacology), 9 West(dep of chem eng),
+    7 West(idk about this one either)
+
+    South Buildings:
+    2 West(Claverton rooms, parade grill),
+    University Hall(lecture theatre, fountain canteen, down the steps opposite the lib),
+    4 West(Student servies, Dep of mathematical sciences),
+    6 West(Through wessex house downstairs on the way to south buildings),
+    6 West South(Study spaces),
+    8 West(School of management), 1
+    10 West(Doctoral College, Dep of psychology)
+
+  South of library (Chemistry and Biology):
+    1 South(Dep of Chem, CSCT),
+    2 South(Bath uni comp services?),
+    3 South(Chem teaching labs, Bio Research),
+    4 South(Dep of Biology),
+    Milner Centre(Centre for evolution research i think),
+    4 South A(something to do with biology),
+    5 South???
+
+  Right/East of library:
+    North Buildings:
+    1 East(couple of lecture theatres),
+    3 East(Dep of econ),
+    Norwood(Accomodation),
+    SU(students union, small fresh, costa, starbucks etc.),
+    Founders Hall(sports/exam hall),
+    Chancellors Building(tallest building on campus, lecture theatres)
+
+    South Buildings:
+    2 East(Dep of Electronic & Electrical eng),
+    4 East(Dep of mech eng),
+    4 East South(research for fac of eng & design, IT services & data centre),
+    6 East(Dep of architecture & civ eng),
+    8 East(Mech eng, think its for motor vehicles research?),
+    The Edge(Theatre, edgy cafe, arts, lectures),
+    East Building(longest building to get to ever, School of management, lectures),
+    STV(sports)
