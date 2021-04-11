@@ -67,8 +67,55 @@ class A_Star():
     method. Apart from the format_output() method, which turns the output into human language, all other methods are just helping
     methods. """
 
-    def __init__(self, filename, start, end):
+    def __init__(self, filename, user_string):
 
+        # Manipulate string
+        splitted_string = user_string.split(" to ")
+        start = splitted_string[0]
+        start = start[5:]
+        end = splitted_string[1]
+
+        # Mapping dict
+        mapping = {
+            "1E": "1 East building",
+            "Norwood":"Norwood House",
+            "SU":"SU building",
+            "Student Union":"SU building",
+            "Founders Hall":"Founders Hall",
+            "FH":"Founders Hall",
+            "2 East":"2 East building",
+            "2E":"2 East building",
+            "4 East":"4 East building",
+            "4E":"4 East building",
+            "4 East South": "4 East South building",
+            "4SE":"4 East South building",
+            "6 East":"6 East building",
+            "6E":"6 East building",
+            "8 East":"8 East building",
+            "8E":"8 East building",
+            "University Hall": "University Hall",
+            "4 West":"4 West building",
+            "4W":"4 West building",
+            "1 East":"1 East building",
+            "1 West":"1 West building",
+            "1W":"1 West building",
+            "3 West":"3 West building",
+            "3W":"3 West building",
+            "Wessex House":"Wessex House",
+            "Big Fresh":"Welcome fresh shop",
+            "Cooperative":"Welcome fresh shop",
+            "Supermarket":"Welcome fresh shop",
+            "Fresh Express":"Welcome fresh shop",
+            "Santander":"Santander shop",
+            "Barclays":"Santander shop",
+            "2 West":"2 West building",
+            "2W":"2 West building"
+        }
+
+        # Map strings
+        start = mapping[start]
+        end = mapping[end]
+        print(start)
         # Load JSON
         with open(filename, 'r') as f:
             self.campus = json.load(f)
@@ -280,13 +327,15 @@ class A_Star():
             # Node before the end
             elif i == len(self.solution)-2:
 
-                # if building then it is the wessex house
+                # if building then it is the wessex house or the SU
                 if "building" in self.solution[i].tags:
 
-                    # ensure it though
+                    # find which one
                     if "through building" in self.solution[i].tags:
                         instructions.append("Finally, go through the Wessex House building, your destination is right on the other side! "+self.solution[-1].description)
-                
+                    else:
+                        instructions.append("Finally, enter the SU building, and go on the right to reach the Founders Hall.")
+
                 # if outside
                 else:
 
@@ -427,9 +476,8 @@ class A_Star():
 
 if __name__ == "__main__":
 
-    start = "build_a"
-    end = "end_a"
-    campus = A_Star("test.json", start, end)
+    input_string = "from 1W to 2E"
+    campus = A_Star("nodes_glossary.json", input_string)
     campus.solve()
     campus.print_solution()
     print(campus.solution)

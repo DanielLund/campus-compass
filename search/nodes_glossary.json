@@ -1,0 +1,622 @@
+{
+    "Library": {
+        "coords": [
+            0.0,
+            7.0
+        ],
+        "neighbors": [
+            "center of the parade"
+        ],
+        "description": "It is the large glass building.",
+        "tags": [
+            "building"
+        ]
+    },
+    "center of the parade": {
+        "coords": [
+            0.0,
+            0.0
+        ],
+        "neighbors": [
+            "Library",
+            "central stairs",
+            "front of the 2 West building",
+            "front of the 2 East building"
+        ],
+        "description": "It is the crossway that is in front of the Library.",
+        "tags": [
+            "front door",
+            "outside",
+            "crossway"
+        ]
+    },
+    "central stairs": {
+        "coords": [
+            0.0,
+            -5.0
+        ],
+        "neighbors": [
+            "center of the parade",
+            "bottom of the central stairs"
+        ],
+        "description": "These stairs are in front of the Library.",
+        "tags": [
+            "outside",
+            "stairs"
+        ]
+    },
+    "bottom of the central stairs": {
+        "coords": [
+            -0.5,
+            -11.0
+        ],
+        "neighbors": [
+            "central stairs",
+            "University Hall",
+            "North of the lake crossway"
+        ],
+        "description": "It is the spot that is right at the bottom of the stairs that are in front of the Library.",
+        "tags": [
+            "front door",
+            "outside",
+            "crossway"
+        ]
+    },
+    "University Hall": {
+        "coords": [
+            -8.0,
+            -11.0
+        ],
+        "neighbors": [
+            "bottom of the central stairs"
+        ],
+        "description": "This building's entry is next to a fountain.",
+        "tags": [
+            "building"
+        ]
+    },
+    "North of the lake crossway": {
+        "coords": [
+            -1.0,
+            -13.0
+        ],
+        "neighbors": [
+            "bottom of the central stairs"
+        ],
+        "description": "This crossway is in front of the amphitheatre and the lake.",
+        "tags": [
+            "crossway",
+            "outside"
+        ]
+    },
+    "front of the 2 West building": {
+        "coords": [
+            -4.0,
+            0.0
+        ],
+        "neighbors": [
+            "center of the parade",
+            "2 West building",
+            "front of the 1 West building"
+        ],
+        "description": "It is the spot in front of the 2 West building.",
+        "tags": [
+            "outside",
+            "crossway",
+            "front door"
+        ]
+    },
+    "2 West building": {
+        "coords": [
+            -4.0,
+            -4.5
+        ],
+        "neighbors": [
+            "front of the 2 West building"
+        ],
+        "description": "It is written FOUNTAIN CANTEEN above the doors of this building.",
+        "tags": [
+            "building"
+        ]
+    },
+    "front of the 1 West building": {
+        "coords": [
+            -10.0,
+            0.0
+        ],
+        "neighbors": [
+            "front of the 2 West building",
+            "1 West building",
+            "front of the 4 West building"
+        ],
+        "description": "It is the spot in front of the 1 West building.",
+        "tags": [
+            "outside",
+            "crossway",
+            "front door"
+        ]
+    },
+    "1 West building": {
+        "coords": [
+            -10.0,
+            7.0
+        ],
+        "neighbors": [
+            "front of the 1 West building"
+        ],
+        "description": "This building is right at the left of the Library.",
+        "tags": [
+            "building"
+        ]
+    },
+    "front of the 4 West building": {
+        "coords": [
+            -15.0,
+            0.0
+        ],
+        "neighbors": [
+            "front of the 1 West building",
+            "4 West building",
+            "front of the 3 West building",
+            "front of the Wessex House"
+        ],
+        "description": "It is the spot in front of the 4 West building.",
+        "tags": [
+            "outside",
+            "crossway",
+            "front door"
+        ]
+    },
+    "4 West building": {
+        "coords": [
+            -15.0,
+            -6.0
+        ],
+        "neighbors": [
+            "front of the 4 West building"
+        ],
+        "description": "There is a 4 West sign on a beam next to the entry.",
+        "tags": [
+            "building"
+        ]
+    },
+    "front of the 3 West building": {
+        "coords": [
+            -15.0,
+            3.0
+        ],
+        "neighbors": [
+            "front of the 4 West building",
+            "3 West building"
+        ],
+        "description": "It is the spot in front of the 3 West building.",
+        "tags": [
+            "outside",
+            "crossway",
+            "front door"
+        ]
+    },
+    "3 West building": {
+        "coords": [
+            -15.0,
+            4.0
+        ],
+        "neighbors": [
+            "front of the 3 West building"
+        ],
+        "description": "There is a West sign on a beam next to the entry.",
+        "tags": [
+            "building"
+        ]
+    },
+    "front of the Wessex House": {
+        "coords": [
+            -26.0,
+            -2.0
+        ],
+        "neighbors": [
+            "front of the 4 West building",
+            "front of the shops",
+            "Wessex House"
+        ],
+        "description": "It is the spot in front of the Wessex House.",
+        "tags": [
+            "outside",
+            "crossway",
+            "front door"
+        ]
+    },
+    "front of the shops": {
+        "coords": [
+            -26.0,
+            2.0
+        ],
+        "neighbors": [
+            "front of the Wessex House",
+            "Santander shop",
+            "Welcome fresh shop"
+        ],
+        "description": "It is the spot in front of Santander.",
+        "tags": [
+            "outside",
+            "crossway",
+            "front door"
+        ]
+    },
+    "Santander shop": {
+        "coords": [
+            -28.0,
+            2.0
+        ],
+        "neighbors": [
+            "front of the shops"
+        ],
+        "description": "The front of the shop is red.",
+        "tags": [
+            "building"
+        ]
+    },
+    "Welcome fresh shop": {
+        "coords": [
+            -25.0,
+            4.0
+        ],
+        "neighbors": [
+            "front of the shops"
+        ],
+        "description": "The front of the shop is green.",
+        "tags": [
+            "building"
+        ]
+    },
+    "front of the 2 East building": {
+        "coords": [
+            7.0,
+            -2.5
+        ],
+        "neighbors": [
+            "center of the parade",
+            "front of the 1 East building",
+            "2 East building",
+            "Norwood House"
+        ],
+        "description": "It is the spot in front of the 2 East building.",
+        "tags": [
+            "outside",
+            "crossway",
+            "front door"
+        ]
+    },
+    "2 East building": {
+        "coords": [
+            7.0,
+            -8.0
+        ],
+        "neighbors": [
+            "front of the 2 East building"
+        ],
+        "description": "There is a 2 East sign on a beam next to the entry.",
+        "tags": [
+            "building"
+        ]
+    },
+    "front of the 1 East building": {
+        "coords": [
+            5.0,
+            5.0
+        ],
+        "neighbors": [
+            "front of the 2 East building",
+            "1 East building"
+        ],
+        "description": "It is the spot in front of the 1 East building.",
+        "tags": [
+            "outside",
+            "crossway",
+            "front door"
+        ]
+    },
+    "1 East building": {
+        "coords": [
+            8.0,
+            5.0
+        ],
+        "neighbors": [
+            "front of the 1 East building"
+        ],
+        "description": "There is a 1 East sign next to the entry.",
+        "tags": [
+            "building"
+        ]
+    },
+    "Norwood House": {
+        "coords": [
+            14.5,
+            -2.0
+        ],
+        "neighbors": [
+            "front of the 2 East building",
+            "front of the 4 East building"
+        ],
+        "description": "This is an archway.",
+        "tags": [
+            "outside",
+            "under building"
+        ]
+    },
+    "front of the 4 East building": {
+        "coords": [
+            16.0,
+            -2.0
+        ],
+        "neighbors": [
+            "Norwood House",
+            "4 East building",
+            "front of the SU building"
+        ],
+        "description": "This is the spot in front of the 4 East building.",
+        "tags": [
+            "outside",
+            "crossway",
+            "front door"
+        ]
+    },
+    "4 East building": {
+        "coords": [
+            16.0,
+            -7.0
+        ],
+        "neighbors": [
+            "front of the 4 East building"
+        ],
+        "description": "The entry is under the Norwood House.",
+        "tags": [
+            "building"
+        ]
+    },
+    "front of the SU building": {
+        "coords": [
+            20.0,
+            -2.0
+        ],
+        "neighbors": [
+            "front of the 4 East building",
+            "SU building",
+            "front of the 6 East building"
+        ],
+        "description": "This is the spot in front of the SU building.",
+        "tags": [
+            "outside",
+            "crossway",
+            "front door"
+        ]
+    },
+    "SU building": {
+        "coords": [
+            20.0,
+            3.0
+        ],
+        "neighbors": [
+            "front of the SU building",
+            "Founders Hall"
+        ],
+        "description": "The front of this building is blue.",
+        "tags": [
+            "building"
+        ]
+    },
+    "Founders Hall": {
+        "coords": [
+            27.0,
+            3.0
+        ],
+        "neighbors": [
+            "SU building"
+        ],
+        "description": "This is a hall.",
+        "tags": [
+            "building"
+        ]
+    },
+    "front of the 6 East building": {
+        "coords": [
+            25.0,
+            -3.0
+        ],
+        "neighbors": [
+            "front of the SU building",
+            "6 East building",
+            "bus stops"
+        ],
+        "description": "This is the spot in front of the 6 East building.",
+        "tags": [
+            "outside",
+            "crossway",
+            "front door"
+        ]
+    },
+    "6 East building": {
+        "coords": [
+            25.0,
+            -5.0
+        ],
+        "neighbors": [
+            "front of the 6 East building"
+        ],
+        "description": "The entry of this building is behind the lift.",
+        "tags": [
+            "building"
+        ]
+    },
+    "bus stops": {
+        "coords": [
+            36.0,
+            -4.0
+        ],
+        "neighbors": [
+            "front of the 6 East building",
+            "front of the 8 East building"
+        ],
+        "description": "There are three bus stops here.",
+        "tags": [
+            "outside"
+        ]
+    },
+    "front of the 8 East building": {
+        "coords": [
+            34.0,
+            -18.0
+        ],
+        "neighbors": [
+            "bus stops",
+            "8 East building",
+            "East corner of the 4 East South building"
+        ],
+        "description": "This is the sport in front of the 8 East building.",
+        "tags": [
+            "outside",
+            "crossway",
+            "front door"
+        ]
+    },
+    "8 East building": {
+        "coords": [
+            30.0,
+            -18.0
+        ],
+        "neighbors": [
+            "front of the 8 East building"
+        ],
+        "description": "There is an 8 East sign next to the entry.",
+        "tags": [
+            "building"
+        ]
+    },
+    "East corner of the 4 East South building": {
+        "coords": [
+            29.0,
+            -24.0
+        ],
+        "neighbors": [
+            "front of the 8 East building",
+            "front of the 4 East South building"
+        ],
+        "description": "This is the corner of the building.",
+        "tags": [
+            "outside"
+        ]
+    },
+    "front of the 4 East South building": {
+        "coords": [
+            20.0,
+            -24.0
+        ],
+        "neighbors": [
+            "East corner of the 4 East South building",
+            "4 East South building",
+            "West corner of the 4 East South building"
+        ],
+        "description": "This is the spot in front of the 4 East South building.",
+        "tags": [
+            "outside",
+            "crossway",
+            "front door"
+        ]
+    },
+    "4 East South building": {
+        "coords": [
+            20.0,
+            -21.0
+        ],
+        "neighbors": [
+            "front of the 4 East South building"
+        ],
+        "description": "There is a 4 East South sign next to the entry.",
+        "tags": [
+            "building"
+        ]
+    },
+    "West corner of the 4 East South building": {
+        "coords": [
+            10.0,
+            -24.0
+        ],
+        "neighbors": [
+            "front of the 4 East South building",
+            "delivery area"
+        ],
+        "description": "This is the corner of the building.",
+        "tags": [
+            "outside"
+        ]
+    },
+    "delivery area": {
+        "coords": [
+            10.0,
+            -18.0
+        ],
+        "neighbors": [
+            "West corner of the 4 East South building",
+            "front of the amphitheatre"
+        ],
+        "description": "There are several parking places there.",
+        "tags": [
+            "outside"
+        ]
+    },
+    "front of the amphitheatre": {
+        "coords": [
+            2.0,
+            -18.0
+        ],
+        "neighbors": [
+            "delivery area",
+            "North of the lake crossway"
+        ],
+        "description": "The amphitheatre is there.",
+        "tags": [
+            "outside"
+        ]
+    },
+    "East corner of the University Hall": {
+        "coords": [
+            -13.0,
+            -14.0
+        ],
+        "neighbors": [
+            "North of the lake crossway",
+            "lake"
+        ],
+        "description": "This is the corner of a building.",
+        "tags": [
+            "outside"
+        ]
+    },
+    "lake": {
+        "coords": [
+            -13.0,
+            -30.0
+        ],
+        "neighbors": [
+            "East corner of the University Hall"
+        ],
+        "description": "The lake is there.",
+        "tags": [
+            "outside"
+        ]
+    },
+    "Wessex House": {
+        "coords": [
+            -28.0,
+            -2.0
+        ],
+        "neighbors": [
+            "front of the Wessex House"
+        ],
+        "description": "The is a Wessex House sign next to the entry.",
+        "tags": [
+            "building",
+            "through building"
+        ]
+    }
+}
